@@ -33,9 +33,9 @@
     </header>
     {{ block "main" . }}{{ end }}
     <footer class="foot">
-      <a href="{{ site.Params.github }}">github</a>
-      <a href="mailto:{{ site.Params.email }}">email</a>
-      {{ with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">rss</a>{{ end }}{{ end }}
+      <a target="_blank" href="{{ site.Params.github }}">github</a>
+      <a target="_blank" href="mailto:{{ site.Params.email }}">email</a>
+      {{ with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}<a target="_blank" href="{{ .RelPermalink }}">rss</a>{{ end }}{{ end }}
     </footer>
   </main>
   {{ $js := resources.Get "js/theme.js" | minify | fingerprint }}
