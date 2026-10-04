@@ -50,14 +50,19 @@ One-time setup, in the repo on GitHub:
    Without this the workflow will fail at the deploy step.
 2. Push to `main`. Watch it under the **Actions** tab.
 
-The site lands at <https://gethinjones1.github.io/site/>.
+The site lands at <https://gethinjones1.github.io/>.
 
 The workflow takes `baseURL` from the Pages config rather than `hugo.toml`, so
 renaming the repo or adding a custom domain needs no change here.
 
-`hugo.toml` deliberately keeps `baseURL` free of the `/site/` path. Putting the
-path there would make `hugo server` serve from `http://localhost:1313/site/`,
-leaving the plain root a 404 with an unstyled page.
+This repo is named `gethinjones1.github.io`, which is what makes Pages serve it
+at the root. Renaming it to anything else turns it into a "project site" served
+from `/<repo-name>/` instead.
+
+If that ever happens, do **not** add the path to `baseURL` here — the workflow
+already injects the right URL. A path in `hugo.toml` only breaks local dev, by
+making `hugo server` serve from `localhost:1313/<path>/` and leaving the plain
+root a 404 with an unstyled page.
 
 ### A custom domain later
 

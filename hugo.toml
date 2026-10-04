@@ -1,4 +1,4 @@
-baseURL = "https://gethinjones1.github.io/"   # the /site/ path is injected by the Pages workflow
+baseURL = "https://gethinjones1.github.io/"
 languageCode = "en-gb"
 title = "Gethin Jones"
 enableRobotsTXT = true
