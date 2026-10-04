@@ -1,0 +1,27 @@
+{{ define "main" }}
+<p class="intro">{{ site.Params.description }}<span class="cursor" aria-hidden="true">_</span></p>
+
+{{ with site.Data.now.rows }}
+<section aria-labelledby="now">
+  <h2 id="now">now</h2>
+  {{ range . }}
+  <div class="row"><span class="muted">{{ .label }}</span><span>{{ .value }}</span></div>
+  {{ end }}
+</section>
+{{ end }}
+
+{{ with site.GetPage "/notes" }}
+{{ $notes := .Pages.ByDate.Reverse }}
+{{ if $notes }}
+<section aria-labelledby="notes">
+  <h2 id="notes">notes</h2>
+  {{ range first site.Params.homeNotes $notes }}
+  <div class="row"><time class="muted" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+  {{ end }}
+  {{ if gt (len $notes) site.Params.homeNotes }}
+  <div class="row"><span></span><a class="muted" href="{{ .RelPermalink }}">all notes →</a></div>
+  {{ end }}
+</section>
+{{ end }}
+{{ end }}
+{{ end }}

@@ -1,0 +1,24 @@
+baseURL = "https://example.com/"   # change to your domain
+languageCode = "en-gb"
+title = "Gethin Jones"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Inquisive engineer. Currently helping the DVLA migrate away from an IBM mainframe @ Made Tech."
+  github = "https://github.com/gethinjones1"
+  email = "gethinjackjones@gmail.com"
+  homeNotes = 5          # how many notes to list on the homepage
+
+[permalinks]
+  notes = "/notes/:slug/"
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.highlight]
+  noClasses = false      # plain code blocks; no colour theme to fight dark mode

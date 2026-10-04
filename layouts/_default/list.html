@@ -1,0 +1,10 @@
+{{ define "main" }}
+<section aria-labelledby="all">
+  <h1 id="all" class="section-title">{{ .Title | lower }}</h1>
+  {{ range .Pages.ByDate.Reverse }}
+  <div class="row"><time class="muted" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01" }}</time><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+  {{ else }}
+  <p class="muted">Nothing here yet.</p>
+  {{ end }}
+</section>
+{{ end }}

@@ -1,0 +1,12 @@
+# The "now" block on the homepage. Edit freely; add or remove rows.
+[[rows]]
+label = "work"
+value = "Lead engineer at Made Tech"
+
+[[rows]]
+label = "reading"
+value = "The Five Dysfunctions of a Team - Patrick Lencioni"
+
+[[rows]]
+label = "into"
+value = "Learning to surf"

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="{{ site.LanguageCode }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Set the theme before paint so there's no flash.
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  {{ $css := resources.Get "css/site.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  {{ with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}
+  <link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }} — notes">
+  {{ end }}{{ end }}
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Ccircle cx='5' cy='5' r='5' fill='%23e8590c'/%3E%3C/svg%3E">
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <a class="name" href="{{ "/" | relURL }}"><span class="dot" aria-hidden="true"></span>{{ if .IsHome }}<h1>{{ site.Title }}</h1>{{ else }}<span>{{ site.Title }}</span>{{ end }}</a>
+      <button type="button" class="toggle" aria-pressed="false" aria-label="Switch to dark mode"><span class="ring" aria-hidden="true"></span><span class="label">dark</span></button>
+    </header>
+    {{ block "main" . }}{{ end }}
+    <footer class="foot">
+      <a href="{{ site.Params.github }}">github</a>
+      <a href="mailto:{{ site.Params.email }}">email</a>
+      {{ with site.GetPage "/notes" }}{{ with .OutputFormats.Get "rss" }}<a href="{{ .RelPermalink }}">rss</a>{{ end }}{{ end }}
+    </footer>
+  </main>
+  {{ $js := resources.Get "js/theme.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+</body>
+</html>
