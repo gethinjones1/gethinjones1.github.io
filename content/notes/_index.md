@@ -1,3 +1,3 @@
 ---
-title: "Brain dumps"
+title: "Notes"
 ---
