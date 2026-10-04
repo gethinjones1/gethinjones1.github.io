@@ -5,7 +5,7 @@ enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
 
 [params]
-  description = "Inquisive engineer. Currently helping the DVLA migrate away from an IBM mainframe @ Made Tech."
+  description = "Inquisitive engineer. Currently helping the DVLA migrate away from an IBM mainframe @ Made Tech."
   github = "https://github.com/gethinjones1"
   email = "gethinjackjones@gmail.com"
   homeNotes = 5          # how many notes to list on the homepage
