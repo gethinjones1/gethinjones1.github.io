@@ -40,12 +40,26 @@ Images: put them next to the post by making a folder instead of a file —
 | Colours (light and dark) | `assets/css/site.css`, top of file |
 | Layout | `layouts/` |
 
-## Deploy (Cloudflare Pages)
+## Deploy (GitHub Pages)
 
-1. Push this folder to a GitHub repo.
-2. Cloudflare dashboard → Workers & Pages → Create → Pages → connect the repo.
-3. Build command `hugo --minify`, output directory `public`.
-4. Add an environment variable `HUGO_VERSION` = `0.150.0`.
-5. Set `baseURL` in `hugo.toml` to your domain.
+Pushes to `main` build and publish automatically via `.github/workflows/deploy.yml`.
 
-Every push to `main` redeploys.
+One-time setup, in the repo on GitHub:
+
+1. **Settings → Pages → Build and deployment → Source: GitHub Actions.**
+   Without this the workflow will fail at the deploy step.
+2. Push to `main`. Watch it under the **Actions** tab.
+
+The site lands at <https://gethinjones1.github.io/site/>.
+
+The workflow takes `baseURL` from the Pages config rather than `hugo.toml`, so
+renaming the repo or adding a custom domain needs no change here.
+
+`hugo.toml` deliberately keeps `baseURL` free of the `/site/` path. Putting the
+path there would make `hugo server` serve from `http://localhost:1313/site/`,
+leaving the plain root a 404 with an unstyled page.
+
+### A custom domain later
+
+Settings → Pages → Custom domain, then add `static/CNAME` containing the bare
+domain so it survives each deploy.

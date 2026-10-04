@@ -28,7 +28,7 @@
 <body>
   <main class="wrap">
     <header class="top">
-      <a class="name" href="{{ "/" | relURL }}"><span class="dot" aria-hidden="true"></span>{{ if .IsHome }}<h1>{{ site.Title }}</h1>{{ else }}<span>{{ site.Title }}</span>{{ end }}</a>
+      <a class="name" href="{{ site.Home.RelPermalink }}"><span class="dot" aria-hidden="true"></span>{{ if .IsHome }}<h1>{{ site.Title }}</h1>{{ else }}<span>{{ site.Title }}</span>{{ end }}</a>
       <button type="button" class="toggle" aria-pressed="false" aria-label="Switch to dark mode"><span class="ring" aria-hidden="true"></span><span class="label">dark</span></button>
     </header>
     {{ block "main" . }}{{ end }}

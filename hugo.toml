@@ -1,4 +1,4 @@
-baseURL = "https://example.com/"   # change to your domain
+baseURL = "https://gethinjones1.github.io/"   # the /site/ path is injected by the Pages workflow
 languageCode = "en-gb"
 title = "Gethin Jones"
 enableRobotsTXT = true
